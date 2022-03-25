@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/star-wars-planet-search/static/css/main.2c0f6c8d.css",
+    "main.js": "/star-wars-planet-search/static/js/main.1fe4729c.js",
+    "static/media/star-wars-backgrounds-25.jpg": "/star-wars-planet-search/static/media/star-wars-backgrounds-25.b211fc0645e20fb74453.jpg",
+    "static/media/Starjedi.ttf": "/star-wars-planet-search/static/media/Starjedi.8d577dc1e1755c4860f3.ttf",
+    "index.html": "/star-wars-planet-search/index.html",
+    "main.2c0f6c8d.css.map": "/star-wars-planet-search/static/css/main.2c0f6c8d.css.map",
+    "main.1fe4729c.js.map": "/star-wars-planet-search/static/js/main.1fe4729c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c0f6c8d.css",
+    "static/js/main.1fe4729c.js"
+  ]
+}
