@@ -1,0 +1,14 @@
+body {
+  background-image: url('./images/star-wars-backgrounds-25.jpg');
+  font-family: 'Star Jedi';
+  color: yellow;
+}
+
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('./font/Starjedi.ttf') format('truetype');
+}
+
+.star-wars-table {
+  font-size: 2vh;
+}
