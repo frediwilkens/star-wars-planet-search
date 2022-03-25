@@ -10,6 +10,7 @@ export default function Filters() {
     setFilters,
     options,
     setOptions,
+    originalOptions,
   } = useContext(StarWarsContext);
   const [selectedColumn, setSelectedColumn] = useState(options[0]);
   const [selectedComparison, setSelectedComparison] = useState('menor que');
@@ -73,7 +74,24 @@ export default function Filters() {
     setNumberValue('');
   };
 
-  console.log(filters);
+  const removeFilter = (index) => {
+    const { filterByNumericValues } = filters;
+    const newFilters = filterByNumericValues.filter((value, i) => index !== i);
+    setFilters({
+      ...filters,
+      filterByNumericValues: newFilters,
+    });
+    if (newFilters.length === 0) {
+      setData(originalData);
+      return setOptions(originalOptions);
+    }
+    setOptions(originalOptions);
+    return newFilters
+      .forEach(({ column, comparison, value }) => {
+        setOptions(options.filter((option) => option !== column));
+        return numberFilter(column, comparison, value);
+      });
+  };
 
   return (
     <div className="filters-container">
@@ -122,6 +140,25 @@ export default function Filters() {
       >
         Filter
       </button>
+
+      <div>
+        <h2>in use</h2>
+        {
+          filters.filterByNumericValues.map(({ column, comparison, value }, index) => (
+            <div key={ index }>
+              <p>
+                {`column: ${column} - comparison: ${comparison} - value: ${value} `}
+              </p>
+              <button
+                type="button"
+                onClick={ () => removeFilter(index) }
+              >
+                x
+              </button>
+            </div>
+          ))
+        }
+      </div>
     </div>
   )
 }

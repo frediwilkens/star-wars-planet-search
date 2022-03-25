@@ -19,6 +19,7 @@ function Provider({ children }) {
     filterByNumericValues: [],
   });
   const [options, setOptions] = useState(numericColumns);
+  const [originalOptions, setOriginalOptions] = useState(numericColumns);
 
   useEffect(() => {
     async function fetchStarWarsPlanets() {
@@ -29,6 +30,7 @@ function Provider({ children }) {
     fetchStarWarsPlanets();
   }, []);
 
+
   const context = {
     originalData,
     data,
@@ -37,6 +39,8 @@ function Provider({ children }) {
     setFilters,
     options,
     setOptions,
+    originalOptions,
+    setOriginalOptions,
   };
 
   return (
