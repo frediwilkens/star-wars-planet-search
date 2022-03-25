@@ -1,7 +1,10 @@
 body {
+  height: 100vh;
+  width: 100%;
   background-image: url('./images/star-wars-backgrounds-25.jpg');
   font-family: 'Star Jedi';
   color: yellow;
+
 }
 
 @font-face {
@@ -9,6 +12,70 @@ body {
   src: url('./font/Starjedi.ttf') format('truetype');
 }
 
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-title {
+  text-align: center;
+}
+
+.filters-container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-in-use-container {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.filter-in-use-container h2 {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.in-use-filter {
+  display: flex;
+  height: 80%;
+  width: 60%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.in-use-filter p {
+  margin: 0;
+  height: 4vh;
+  ;
+}
+
+.in-use-filter button {
+  height: 3vh;
+  width: 3vh;
+  background-color:black;
+  color: yellow;
+  border: none;
+  font-family: 'Star Jedi';
+  font-size: 1.5vh;
+  border: 2px dashed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .star-wars-table {
-  font-size: 1.8vh;
+  font-size: 1.6vh;
+  text-align: center;
 }

@@ -141,11 +141,14 @@ export default function Filters() {
         Filter
       </button>
 
-      <div>
+      <div className="filter-in-use-container">
         <h2>in use</h2>
         {
           filters.filterByNumericValues.map(({ column, comparison, value }, index) => (
-            <div key={ index }>
+            <div
+              className="in-use-filter" 
+              key={ index }
+            >
               <p>
                 {`column: ${column} - comparison: ${comparison} - value: ${value} `}
               </p>
