@@ -3,11 +3,19 @@ import PropTypes from 'prop-types';
 import StarWarsContext from './StartWarsContext';
 
 const endpoint = 'https://swapi-trybe.herokuapp.com/api/planets/';
+const numericColumns = [
+  'population',
+  'orbital_period',
+  'diameter',
+  'rotation_period',
+  'surface_water'
+];
 
 function Provider({ children }) {
   const [data, setData] = useState([{}]);
   const [originalData, setOriginalData] = useState([{}]);
   const [filters, setFilters] = useState({});
+  const [options, setOptions] = useState(numericColumns);
 
   useEffect(() => {
     async function fetchStarWarsPlanets() {
@@ -19,11 +27,13 @@ function Provider({ children }) {
   }, []);
 
   const context = {
+    originalData,
     data,
     setData,
     filters,
     setFilters,
-    originalData,
+    options,
+    setOptions,
   };
 
   return (
