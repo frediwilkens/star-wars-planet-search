@@ -16,14 +16,13 @@ export default function Filters() {
         name: value,
       },
     });
-    const result = originalData.filter(({ name }) => {
-      if (value === '') return name
-      return name.toLowerCase().includes(value.toLowerCase());
-    });
-    return setData(result);
+
+    if (value === '') return setData(originalData);
+
+    const newData = originalData.filter(({ name }) => (
+      name.toLowerCase().includes(value.toLowerCase())));
+    return setData(newData);
   }
-
-
   return (
     <div className="filters-container">
       <input

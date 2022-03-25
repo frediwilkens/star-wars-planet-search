@@ -2,12 +2,11 @@ import React, { useContext } from 'react'
 import StarWarsContext from '../context/StartWarsContext'
 
 export default function Table() {
-  const { data } = useContext(StarWarsContext);
-  const tableHeaders = Object.keys(data[0])
+  const { data, originalData } = useContext(StarWarsContext);
+  const tableHeaders = Object.keys(originalData[0])
     .filter((key) => (
       (key !== 'films') && (key !== 'residents') && (key !== 'edited') && (key !== 'created')
     ));
-  console.log(tableHeaders);
 
   return (
     <table className="star-wars-table">
