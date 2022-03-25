@@ -14,7 +14,10 @@ const numericColumns = [
 function Provider({ children }) {
   const [data, setData] = useState([{}]);
   const [originalData, setOriginalData] = useState([{}]);
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({
+    filterByName: { name: ''},
+    filterByNumericValues: [],
+  });
   const [options, setOptions] = useState(numericColumns);
 
   useEffect(() => {

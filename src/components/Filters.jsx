@@ -3,6 +3,7 @@ import StarWarsContext from '../context/StartWarsContext'
 
 export default function Filters() {
   const {
+    data,
     originalData,
     setData,
     filters,
@@ -29,6 +30,51 @@ export default function Filters() {
     return setData(newData);
   }
 
+  const numberFilter = (column, comparison, value) => {
+    const underlineColumm = column.replace(' ', '_');
+    switch (comparison) {
+    case 'maior que':
+      setData(
+        data
+          .filter((planet) => Number(planet[underlineColumm]) > Number(value)),
+      );
+      break;
+    case 'menor que':
+      setData(
+        data
+          .filter((planet) => Number(planet[underlineColumm]) < Number(value)),
+      );
+      break;
+    case 'igual a':
+      setData(
+        data
+          .filter((planet) => Number(planet[underlineColumm]) === Number(value)),
+      );
+      break;
+    default: break;
+    }
+  };
+
+  const handleSelected = () => {
+    const numericValues = {
+      column: selectedColumn,
+      comparison: selectedComparison,
+      value: numberValue,
+    };
+
+    setFilters({
+      ...filters,
+      filterByNumericValues: [...filters.filterByNumericValues, numericValues],
+    });
+    numberFilter(selectedColumn, selectedComparison, numberValue);
+    const newOptions = options.filter((option) => option !== selectedColumn.replace(' ', '_'));
+    setOptions(newOptions);
+    setSelectedColumn(newOptions[0])
+    setNumberValue('');
+  };
+
+  console.log(filters);
+
   return (
     <div className="filters-container">
       <input
@@ -42,6 +88,7 @@ export default function Filters() {
       <select
         name="filter-option"
         className="select-input"
+        value={ selectedColumn }
         onChange={ ({ target: { value } }) => setSelectedColumn(value) }
       >
         {
@@ -67,6 +114,14 @@ export default function Filters() {
         onChange={ ({ target: { value } }) => setNumberValue(value) }
         placeholder="Type a Number"
       />
+      
+      <button
+        type="button"
+        className="filter-btn"
+        onClick={ handleSelected }
+      >
+        Filter
+      </button>
     </div>
   )
 }
